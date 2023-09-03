@@ -82,7 +82,7 @@ const App = () => {
       <div className="row">
       <Dropdown>
       <Dropdown.Toggle variant="success" id="dropdown-basic">
-        Dropdown Button
+        Purpose input
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
