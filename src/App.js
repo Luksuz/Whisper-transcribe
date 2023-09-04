@@ -86,7 +86,7 @@ const App = () => {
     <div className="container d-flex flex-column ">
       <div className="row text-light shadow">
         <div className="col-4">
-        <img src="./brand.svg" className="img-fluid" />
+        <img src="./brand.svg" className="img-fluid" alt="AI-TRANSCRIBER"/>
         </div>
       </div>
       <div className="row mt-2">
@@ -126,8 +126,9 @@ const App = () => {
               className="img-fluid"
               src={isRecording ? "./microphone-active.png" : "./microphone.png"}
               width="40px"
+              alt="microphone"
             />
-            {isRecording && <img src="./recording.svg"/>}
+            {isRecording && <img src="./recording.svg" alt="recording"/>}
           </Button>
         </div>
         
@@ -136,7 +137,7 @@ const App = () => {
         <pre className="text-wrap bordered text-light">
           <p>{transcription && transcription}</p>
           <br />
-          {isGenerating ? <img src="./transcribing.svg" /> : gptText}
+          {isGenerating ? <img src="./transcribing.svg" alt="loading"/> : gptText}
         </pre>
       </div>
     </div>
