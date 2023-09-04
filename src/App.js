@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./style.css";
 import { Button, Dropdown, Form } from "react-bootstrap";
 
 const App = () => {
@@ -44,7 +45,6 @@ const App = () => {
     console.log(typeof blob);
     console.log(blob);
     transcribe(blob);
-
   };
 
   const stopRecording = () => {
@@ -57,14 +57,14 @@ const App = () => {
     setIsGenerating(true);
     const formData = new FormData();
     formData.append("file", blob, "audio.wav");
-    formData.append("purpose", purpose); 
+    formData.append("purpose", purpose);
     console.log(formData);
 
     const response = await fetch(
       "https://cloudfunctions-397608.ew.r.appspot.com/",
       {
         method: "POST",
-        body: formData
+        body: formData,
       }
     );
 
@@ -75,48 +75,63 @@ const App = () => {
   };
 
   return (
-    <div className="container d-flex flex-column">
-      <div className="row">
+    <div className="container d-flex flex-column ">
+      <div className="row text-light">
         <h1>Audio Capture Demo</h1>
       </div>
       <div className="row">
-      <Dropdown>
-      <Dropdown.Toggle variant="success" id="dropdown-basic">
-        Purpose input
-      </Dropdown.Toggle>
+        <Dropdown>
+          <Dropdown.Toggle className="tertiary" id="dropdown-basic">
+            Purpose input
+          </Dropdown.Toggle>
 
-      <Dropdown.Menu>
-      <Form className="w-auto">
-      <Form.Group className="mb-3">
-        <Form.Label>Transcription purpose</Form.Label>
-        <Form.Control onChange={(e) => handleSetPurpose(e)} value={purpose} placeholder="Enter transcription purpose..." />
-        <Form.Text className="text-muted word-wrap">
-          NOTE: 
-          <br />
-          if you enter a purpose that doesnt make sense, 
-          <br /> 
-          you might get unexpected results or an error.
-        </Form.Text>
-      </Form.Group>
-      </Form>
-      </Dropdown.Menu>
-    </Dropdown>
+          <Dropdown.Menu>
+            <Form className="w-auto">
+              <Form.Group className="mb-3">
+                <Form.Label>Transcription purpose</Form.Label>
+                <Form.Control
+                  onChange={(e) => handleSetPurpose(e)}
+                  value={purpose}
+                  placeholder="Enter transcription purpose..."
+                />
+                <Form.Text className="text-muted word-wrap">
+                  NOTE:
+                  <br />
+                  if you enter a purpose that doesnt make sense,
+                  <br />
+                  you might get unexpected results or an error.
+                </Form.Text>
+              </Form.Group>
+            </Form>
+          </Dropdown.Menu>
+        </Dropdown>
       </div>
-      <div className="row mb-2">
-        <audio ref={audioRef} controls></audio>
+      <div className="row mb-2 justify-content-center">
+        <audio ref={audioRef} controls className="w-75 shadow-lg"></audio>
       </div>
-      <div className="row">
+      <div className="row text-center justify-content-center align-items-center">
         <div className="col-5">
-          <Button onClick={startRecording}>Start Recording</Button>
+          <Button className="secondary" onClick={startRecording}>
+            <img
+              className="img-fluid"
+              src={isRecording ? "./microphone-active.png" : "./microphone.png"}
+              width="40px"
+            />
+          </Button>
         </div>
         <div className="col-5">
-            <Button onClick={stopRecording}>Stop Recording</Button>
-          </div>
+          <Button className="secondary" onClick={stopRecording}>
+            <img className="img-fluid" src="./mute.png" width="40px" />
+          </Button>
+        </div>
       </div>
-      {isRecording && <p>Recording...</p>}
-      <p>{transcription && transcription}</p>
-      <br />
-      <pre className="text-wrap">{isGenerating? "Transcribing...Please wait" : gptText}</pre>
+      <div className="d-flex justify-content-center mt-2">
+        <pre className="text-wrap bordered text-light">
+          <p>{transcription && transcription}</p>
+          <br />
+          {isGenerating ? <img src="./transcribing.svg" /> : gptText}
+        </pre>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,18 @@
+.primary{
+    background: #404258;
+}
+
+.secondary{
+    background: #474E68;
+    box-shadow: 0px 0px 10px rgb(127, 136, 182);
+}
+
+.tertiary{
+    background: #50577A;
+    box-shadow: 0px 0px 10px rgb(127, 136, 182);
+}
+
+.quaternary{
+    background: #6B728E;
+    box-shadow: 0px 0px 10px rgb(127, 136, 182);
+}
