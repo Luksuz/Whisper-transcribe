@@ -14,7 +14,6 @@ const App = () => {
   const [isRecording, setIsRecording] = useState(false);
 
   const startRecording = async () => {
-    setIsRecording(true);
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       mediaRecorder.current = new MediaRecorder(stream);
@@ -53,6 +52,15 @@ const App = () => {
     }
   };
 
+  function toggleRecording(){
+    setIsRecording(!isRecording);
+    if (isRecording) {
+      stopRecording();
+    }else{
+      startRecording();
+    }
+  }
+
   const transcribe = async (blob) => {
     setIsGenerating(true);
     const formData = new FormData();
@@ -76,12 +84,14 @@ const App = () => {
 
   return (
     <div className="container d-flex flex-column ">
-      <div className="row text-light">
-        <h1>Audio Capture Demo</h1>
+      <div className="row text-light shadow">
+        <div className="col-4">
+        <img src="./brand.svg" className="img-fluid" />
+        </div>
       </div>
-      <div className="row">
+      <div className="row mt-2">
         <Dropdown>
-          <Dropdown.Toggle className="tertiary" id="dropdown-basic">
+          <Dropdown.Toggle className="tertiary btn-outline-secondary text-light" id="dropdown-basic">
             Purpose input
           </Dropdown.Toggle>
 
@@ -111,19 +121,16 @@ const App = () => {
       </div>
       <div className="row text-center justify-content-center align-items-center">
         <div className="col-5">
-          <Button className="secondary" onClick={startRecording}>
+          <Button className="secondary btn-outline-secondary" onClick={toggleRecording}>
             <img
               className="img-fluid"
               src={isRecording ? "./microphone-active.png" : "./microphone.png"}
               width="40px"
             />
+            {isRecording && <img src="./recording.svg"/>}
           </Button>
         </div>
-        <div className="col-5">
-          <Button className="secondary" onClick={stopRecording}>
-            <img className="img-fluid" src="./mute.png" width="40px" />
-          </Button>
-        </div>
+        
       </div>
       <div className="d-flex justify-content-center mt-2">
         <pre className="text-wrap bordered text-light">

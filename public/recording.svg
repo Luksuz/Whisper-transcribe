@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="77" height="40" preserveAspectRatio="xMidYMid">
+<style type="text/css">
+  text {
+    text-anchor: middle; font-size: 200px; opacity: 0;
+  }
+</style>
+<g style="transform-origin:38.5px 20px;transform:scale(1)">
+<g transform="translate(38.5,20)">
+  <g transform="translate(0,0)"><g class="path" style="opacity: 1; transform-origin: 16.6px -0.816005px; animation: 1s linear 0s infinite normal forwards running fade-71b903b0-19de-49f0-9611-9eb80e21ed0e;"><path d="M16.60-11L16.60-11L16.60-11Q16.60-17.20 20.10-20.80L20.10-20.80L20.10-20.80Q23.60-24.40 30-24.40L30-24.40L30-24.40Q35.20-24.40 39.30-20.40L39.30-20.40L39.30-20.40Q43.40-16.40 43.40-11L43.40-11L43.40-11Q43.40-5 39.60-1.30L39.60-1.30L39.60-1.30Q35.80 2.40 30 2.40L30 2.40L30 2.40Q24.60 2.40 20.60-1.60L20.60-1.60L20.60-1.60Q16.60-5.60 16.60-11" fill="#93dbe9" stroke="none" stroke-width="none" transform="translate(-13.4000244140625,10.183995361328126)" style="fill: rgb(147, 219, 233);"></path></g></g>
+</g>
+</g>
+<style id="fade-71b903b0-19de-49f0-9611-9eb80e21ed0e" data-anikit="">@keyframes fade-71b903b0-19de-49f0-9611-9eb80e21ed0e
+{
+  0% {
+    animation-timing-function: cubic-bezier(0.2057,0.573,0.3723,0.9184);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}</style></svg>
